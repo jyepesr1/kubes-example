@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-kub
+    role: web
+  namespace: dev
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-kub
+      role: web
+  template:
+    metadata:
+      labels:
+        app: hello-kub
+        role: web
+    spec:
+      containers:
+      - image: paulbouwer/hello-kubernetes:1.8
+        name: web
